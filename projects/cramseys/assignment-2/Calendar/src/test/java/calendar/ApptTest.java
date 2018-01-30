@@ -48,16 +48,23 @@ public class ApptTest {
 	 	@Test
 	  public void sets()  throws Throwable  {
 			Appt a = new Appt(1,1,1,1,1,"A","B");
+			a.setStartHour(30);
+			assertTrue(a.getValid());
 			a.setStartHour(2);
 			assertEquals(2, a.getStartHour());
+			assertTrue(a.getValid());
 			a.setStartMinute(2);
 			assertEquals(2, a.getStartMinute());
+			assertTrue(a.getValid());
 			a.setStartMonth(2);
 			assertEquals(2, a.getStartMonth());
+			assertTrue(a.getValid());
 			a.setStartYear(2);
 			assertEquals(2, a.getStartYear());
+			assertTrue(a.getValid());
 			a.setStartDay(2);
 			assertEquals(2, a.getStartDay());
+			assertTrue(a.getValid());
 			a.setTitle("B");
 			assertEquals("B", a.getTitle());
 			a.setDescription("A");
