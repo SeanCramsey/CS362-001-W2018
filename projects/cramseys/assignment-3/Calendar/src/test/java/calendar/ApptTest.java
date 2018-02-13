@@ -28,6 +28,10 @@ public class ApptTest {
 			 assertEquals(1, a.getStartYear());
 			 assertEquals("A", a.getTitle());
 			 assertEquals("B", a.getDescription());
+			 assertNotNull(a.getRecurDays());
+			 assertEquals(0,a.getRecurIncrement());
+			 assertEquals(0,a.getRecurNumber());
+			 assertEquals(2,a.getRecurBy());
 		 }
 		@Test
 		public void getValid() throws Throwable {
@@ -100,7 +104,9 @@ public class ApptTest {
 			assertNull(b.toString());
 			Appt c = new Appt(22,1,1,1,1,"A","B");
 			assertEquals("	1/1/1 at 10:1pm ,A, B\n", c.toString());
-		}
+			Appt d = new Appt(0,1,1,1,1,"A","B");
+			assertEquals("	1/1/1 at 12:1am ,A, B\n", d.toString());
+		 }
 		@Test
 		public void Compare() throws Throwable{
 			Appt a = new Appt(1,1,1,1,1,"A","B");

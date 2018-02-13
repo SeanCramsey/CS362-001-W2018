@@ -17,12 +17,32 @@ public class TimeTableTest {
     @Test
     public void test01()  throws Throwable  {
       TimeTable t = new TimeTable();
-      assertNotNull(t);
-      Appt a = new Appt(20,20,20,12,1999,"A","B");
-      Appt b = new Appt(20,20,20,12,2000,"A","B");
-      LinkedList<Appt> l = new LinkedList<Appt>();
+        assertNotNull(t);
+        int startHour = 12;
+        int startMinute = 30;
+        int startDay = 5;
+        int startMonth = 5;
+        int startYear = 2017;
+      Appt a = new Appt(startHour,startMinute,startDay,startMonth,startYear,"A","A1");
+      Appt b = new Appt(startHour,startMinute,startDay,startMonth,startYear,"B","B1");
+      Appt c = new Appt(startHour,startMinute,startDay,startMonth,startYear,"C","C1");
+
+      Appt d = new Appt(1,startMinute,startDay,startMonth,startYear,"D","D1");
+      Appt e = new Appt(1,1,startDay,startMonth,startYear,"E","E1");
+        Appt f = new Appt(1,1,startDay,1,startYear,"F","F1");
+
+        int[] arr = {};
+        int[] arr2 = {1,2,3};
+        int[] arr3 = {5};
+        a.setRecurrence(arr,1,1,1);
+        b.setRecurrence(arr2,1,1,1);
+        c.setRecurrence(arr3,1,1,1);
+        d.setRecurrence(arr,2,1,1);
+        LinkedList<Appt> l = new LinkedList<Appt>();
       l.add(a);
       l.add(b);
+      l.add(c);
+      l.add(d);
       Calendar now = Calendar.getInstance();
       int day = now.get(Calendar.DAY_OF_MONTH);
       int month = now.get(Calendar.MONTH);

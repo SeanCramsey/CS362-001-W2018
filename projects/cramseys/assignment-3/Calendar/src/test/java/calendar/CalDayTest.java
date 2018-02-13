@@ -33,5 +33,8 @@ public class CalDayTest{
       day.addAppt(a);
       assertEquals(1,day.getSizeAppts());
       assertNotEquals("", day.toString());
+      CalDay newday = new CalDay(cal);
+      assertNotNull(newday.getSizeAppts());
+
     }
 }
