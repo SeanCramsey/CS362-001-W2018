@@ -94,5 +94,103 @@ public class TimeTableTest {
       l = null;
       assertNotNull(t.getApptRange(c.getAppts(), g0, g01));
     }
+    @Test
+    public void testDelete()  throws Throwable  {
 
+        TimeTable timetable = new TimeTable();
+        LinkedList<Appt> apptsl = new LinkedList<Appt>();
+
+        //Generate Appointments
+        int startHour=0;
+        int startMinute=30;
+        int startDay= 2;
+        int startMonth= 3;
+        int startYear=2018;
+        String title="A";
+        String description="A";
+        Appt a = new Appt(startHour,
+                startMinute ,
+                startDay ,
+                startMonth ,
+                startYear ,
+                title,
+                description);
+        startHour = 4;
+        title = "B";
+        description = "B";
+        Appt b = new Appt(startHour,
+                startMinute ,
+                startDay ,
+                startMonth ,
+                startYear ,
+                title,
+                description);
+        startHour = 1;
+        startMonth = 3;
+        title = "C";
+        description = "C";
+        Appt c = new Appt(startHour,
+                startMinute ,
+                startDay ,
+                startMonth ,
+                startYear ,
+                title,
+                description);
+        startHour = 1;
+        startMonth = 7;
+        title = "D";
+        description = "D";
+        Appt d = new Appt(startHour,
+                startMinute ,
+                startDay ,
+                startMonth ,
+                startYear ,
+                title,
+                description);
+        startHour = -1;
+        startMonth = 7;
+        title = "E";
+        description = "E";
+        Appt e = new Appt(startHour,
+                startMinute ,
+                startDay ,
+                startMonth ,
+                startYear ,
+                title,
+                description);
+
+        LinkedList<Appt> appts = timetable.deleteAppt(apptsl,a);
+        assertEquals(null,appts);
+
+        apptsl.add(a);
+        apptsl.add(b);
+        apptsl.add(c);
+        apptsl.add(d);
+
+        Calendar rightnow = Calendar.getInstance();
+
+        int thisMonth = rightnow.get(Calendar.MONTH);
+        int thisYear = rightnow.get(Calendar.YEAR);
+        int thisDay = rightnow.get(Calendar.DAY_OF_MONTH);
+
+        //test normal delete
+        appts = timetable.deleteAppt(apptsl,c);
+        String testString = "[\t3/2/2018 at 12:30am ,A, A\n" +
+                ", \t3/2/2018 at 4:30am ,B, B\n" +
+                ", \t7/2/2018 at 1:30am ,D, D\n" +
+                "]";
+        assertEquals(testString,appts.toString());
+
+
+        appts = timetable.deleteAppt(apptsl,c);
+        assertEquals(null,appts);
+
+        apptsl.add(e);
+        appts = timetable.deleteAppt(apptsl,e);
+        assertEquals(null,appts);
+
+        appts = timetable.deleteAppt(null,e);
+        assertEquals(null,appts);
+
+    }
 }

@@ -59,6 +59,8 @@ public class ApptTest {
 			assertTrue(a.getValid());
 			a.setStartHour(30);
 			assertFalse(a.getValid());
+			a.setStartHour(24);
+			assertFalse(a.getValid());
 			a.setStartHour(0);
 			assertTrue(a.getValid());
 			a.setStartHour(-1);
@@ -66,6 +68,12 @@ public class ApptTest {
 			a.setStartHour(2);
 			assertEquals(2, a.getStartHour());
 			assertTrue(a.getValid());
+			a.setStartMinute(-1);
+			assertEquals(-1, a.getStartMinute());
+			assertFalse(a.getValid());
+			a.setStartMinute(60);
+			assertEquals(60, a.getStartMinute());
+			assertFalse(a.getValid());
 			a.setStartMinute(2);
 			assertEquals(2, a.getStartMinute());
 			assertTrue(a.getValid());
@@ -75,6 +83,12 @@ public class ApptTest {
 			assertTrue(a.getValid());
 			a.setStartYear(2);
 			assertEquals(2, a.getStartYear());
+			assertTrue(a.getValid());
+			a.setStartDay(0);
+			assertEquals(0, a.getStartDay());
+			assertFalse(a.getValid());
+			a.setStartDay(1);
+			assertEquals(1, a.getStartDay());
 			assertTrue(a.getValid());
 			a.setStartDay(2);
 			assertEquals(2, a.getStartDay());
@@ -106,7 +120,10 @@ public class ApptTest {
 			assertEquals("	1/1/1 at 10:1pm ,A, B\n", c.toString());
 			Appt d = new Appt(0,1,1,1,1,"A","B");
 			assertEquals("	1/1/1 at 12:1am ,A, B\n", d.toString());
-		 }
+			Appt e = new Appt(11,1,1,1,1,"A","B");
+			assertEquals("	1/1/1 at 11:1am ,A, B\n", e.toString());
+
+		}
 		@Test
 		public void Compare() throws Throwable{
 			Appt a = new Appt(1,1,1,1,1,"A","B");
