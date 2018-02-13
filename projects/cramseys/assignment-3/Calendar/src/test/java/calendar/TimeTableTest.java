@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.LinkedList;
 import java.util.GregorianCalendar;
 import java.util.Calendar;
+import java.util.Iterator;
 
 import static org.junit.Assert.*;
 public class TimeTableTest {
@@ -51,16 +52,14 @@ public class TimeTableTest {
       TimeTable t = new TimeTable();
       LinkedList<Appt> l = new LinkedList<Appt>();
       Appt a = new Appt(5,5,5,5,5,"A","B");
-      Appt b = new Appt(-1,-1,-1,-1,-1,"A","B");
+      Appt b = new Appt(-1,-1,-1,1,-1,"A","B");
       Appt c = new Appt(6,6,6,6,6,"A","B");
-
-      l = null;
       assertNull(t.deleteAppt(l,a));
       l.add(a);
       assertNull(t.deleteAppt(l,b));
       assertNull(t.deleteAppt(l,c));
       l.add(b);
-      assertNotNull(t.deleteAppt(l,a));
+      assertNull(t.deleteAppt(l,a));
     }
     @Test
     public void test04() throws Throwable  {
@@ -74,8 +73,6 @@ public class TimeTableTest {
       LinkedList<Appt> l = new LinkedList<Appt>();
       l = null;
       assertNotNull(t.getApptRange(c.getAppts(), g0, g01));
-
-
     }
 
 }

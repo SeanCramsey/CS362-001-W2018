@@ -4,7 +4,6 @@ package calendar;
  *  CalDay class.
  */
 import org.junit.Test;
-import java.util.Iterator;
 import java.util.GregorianCalendar;
 
 import static org.junit.Assert.*;
@@ -16,7 +15,7 @@ public class CalDayTest{
     public void Constructor()  throws Throwable  {
       GregorianCalendar cal = new GregorianCalendar();
       CalDay night = new CalDay();
-      assertTrue(night.isValid());
+      assertFalse(night.isValid());
       assertNull(night.iterator());
       assertEquals("", night.toString());
       CalDay day = new CalDay(cal);

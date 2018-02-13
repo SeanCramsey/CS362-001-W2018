@@ -89,13 +89,13 @@ public class Appt implements  Comparable<Appt>{
     {
         //Sets all instance variables 
     	this.startHour = startHour;
-    	this.startMinute = startMinute;
-    	this.startDay = startDay;
+    	this.startMinute = startMinute; 
+    	this.startDay = startDay; 
     	this.startMonth = startMonth;
-    	this.startYear = startYear;
+    	this.startYear = startYear; 
         setTitle(title);
         setDescription(description);
-
+   
         //Set default recurring information
         int[] recurringDays = new int[0];
         setRecurrence(recurringDays, RECUR_BY_MONTHLY, 0, RECUR_NUMBER_NEVER);
@@ -112,7 +112,7 @@ public class Appt implements  Comparable<Appt>{
     private void isValid() {
     	int NumDaysInMonth= CalendarUtil.NumDaysInMonth(startYear,startMonth-1);
     				
-    	if(startHour<0 && startHour>23)
+    	if(startHour<0 || startHour>23)
     		this.valid=false;
     	else
         	if(startMinute<0 || startMinute>59)
