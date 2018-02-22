@@ -9,12 +9,11 @@ public class ValuesGenerator {
 	//private final static final int MIN_VALUE=-10;
 
 	private final static float SET_TO_NULL = 0.05f;
-	
+
 	public static int RandInt(Random random){
     	int n = random.nextInt(MAX_VALUE);// get a random number between 0 (inclusive) and  MAX_VALUE=10 (exclusive)
         return (int) n;
         }
-
     	
 	/**
 	 * This generates a coin flip with a probability <tt>probability</tt> of
