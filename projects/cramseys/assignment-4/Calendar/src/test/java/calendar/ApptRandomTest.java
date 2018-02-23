@@ -83,10 +83,10 @@ public class ApptRandomTest {
 				        description);
 
 
-				//int numDaysInMonth = CalendarUtil.NumDaysInMonth(startYear,startMonth-1);
-				//if ( (startHour < 0 || startHour > 23) || (startMinute < 0 || startMinute > 59) || (startDay < 1 || startDay > numDaysInMonth) ) {
-                //    assertFalse(appt.getValid());
-                //} else { assertTrue(appt.getValid()); }
+				int numDaysInMonth = CalendarUtil.NumDaysInMonth(startYear,startMonth-1);
+				if ( (startHour < 0 || startHour > 23) || (startMinute < 0 || startMinute > 59) || (startDay < 1 || startDay > numDaysInMonth) ) {
+                    assertFalse(appt.getValid());
+                } else { assertTrue(appt.getValid()); }
 
 			    if(!appt.getValid())continue;
 
@@ -112,9 +112,6 @@ public class ApptRandomTest {
 						   appt.setRecurrence(recurDays, recur, recurIncrement, recurNumber);
 
 
-						   //if(doNullRecurDays < 25){
-						    //   assertNull(appt.getRecurDays());
-                           //} else { assertNotNull(appt.getRecurDays()); }
 						}				
 				}
 
