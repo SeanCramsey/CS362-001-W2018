@@ -5,7 +5,7 @@ FOUND:		private Appt::IsValid() 		@116
 
 --Bug--
 ...
-if(startHour<0 || startHour>24)
+if(startHour<0 || startHour>24)				//BUGGY should be 23 not 24
             this.valid=false;
 ...
 
@@ -20,7 +20,7 @@ FOUND:		private Appt::representationApp()	@281
 
 --Bug--
 ...
-String half = (getStartHour() > 12) ? "pm" : "am";
+String half = (getStartHour() > 12) ? "pm" : "am";	//BUGGY Should be 11
 ...
 
 --Fix--
@@ -28,3 +28,13 @@ String half = (getStartHour() > 12) ? "pm" : "am";
 String half = (getStartHour() > 11) ? "pm" : "am";
 ...
 -------------------------------------------------------------
+UNTRACKED EDIT						@283
+        if (printableHour > 12) 			//BUGGY should be 11
+        {
+            printableHour -= 12;
+        }
+        if (printableHour == 0)
+        {
+            printableHour = 12;
+        }
+Edit causes no faulty behavior, therefore cannot be detected through testing
