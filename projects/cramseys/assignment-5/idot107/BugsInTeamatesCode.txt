@@ -1,0 +1,30 @@
+--Appt.java--
+-------------------------------------------------------------
+DETECTED:	Appt::getValid() by ApptTest.java 	@62
+FOUND:		private Appt::IsValid() 		@116
+
+--Bug--
+...
+if(startHour<0 || startHour>24)
+            this.valid=false;
+...
+
+--Fix--
+...
+if(startHour<0 || startHour>23)
+            this.valid=false;
+...
+-------------------------------------------------------------
+DETECTED:	Appt::ToString() by ApptTest.java 	@132
+FOUND:		private Appt::representationApp()	@281
+
+--Bug--
+...
+String half = (getStartHour() > 12) ? "pm" : "am";
+...
+
+--Fix--
+...
+String half = (getStartHour() > 11) ? "pm" : "am";
+...
+-------------------------------------------------------------
